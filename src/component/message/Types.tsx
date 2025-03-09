@@ -3,7 +3,6 @@ export type User = {
     email ?: string
 }
 export type Message ={
-    user :  User,
     message : string,
-    createAt?:  string
+    createAt:  string
 }

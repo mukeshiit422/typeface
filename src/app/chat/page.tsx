@@ -1,46 +1,31 @@
 "use client"
 import MessageBody from "@/component/message/MessageBody"
 import User from '@/component/user/User'
-import React, { useEffect } from 'react'
+import React, { useMemo, useState } from 'react'
+import { UserType } from "@/component/user/UserType";
+import { Dummy_User } from "@/component/util/constant";
 
 export default function ChatPage() {
- 
-  // const resizableDiv = document.getElementById("resizableDiv");
-  // const resizer = document.getElementById("resizer");
-
-  // useEffect(()=>{
-    
-  //   if(resizer && resizableDiv){
-  //   resizer.addEventListener("mousedown", function (e) {
-  //     e.preventDefault();
-  
-  //     document.addEventListener("mousemove", resize);
-  //     document.addEventListener("mouseup", () => {
-  //       document.removeEventListener("mousemove", resize);
-  //     });
-  //   });
-  
-  //   function resize(e : any) {
-  //     if(resizableDiv){
-  //     const newWidth = e.clientX - resizableDiv.getBoundingClientRect().left;
-  //     if (newWidth > 50) { // Set a minimum width
-  //       resizableDiv.style.width = `${newWidth}px`;
-  //     }
-  //   }
-  // }
-  // }
-  
-  // },[resizableDiv,resizer])
- 
+  const[users, setUser]= useState<UserType[]>(Dummy_User);
+  const [userId, setUserId] = useState<number | undefined>(undefined);
+  const user = useMemo(()=>{
+    return users.find((user)=>user.id === userId) || Dummy_User[0];
+  },[userId])
   return (
     <div className='flex flex-row w-full'>
-        <div  id="resizableDiv" className='flex w-1/4 h-screen overflow-auto  border-r border-red p-2'>
-           <User/>
+        <div  id="resizableDiv" className='flex w-1/4 h-screen overflow-auto  border-r border-gray-500'>
+           <User users={users} setUserId={setUserId} userId={userId}/>
         </div>
-        {/* <div id="resizer" className="w-2 h-[100px] bg-gray-400 cursor-ew-resize"></div> */}
-        <div  className='flex w-3/4 h-screen overflow-auto  border-r border-red'>
-         <MessageBody/>
-        </div>
+        { userId ? 
+          <div  className='flex w-3/4 h-screen overflow-auto border-r order-gray-500'>
+          <MessageBody setUser ={setUser} user={user} users={users}/>
+         </div>
+           :
+           <div className="flex justify-center items-center text-center">
+            Please select the user to chat
+           </div>
+         }
+        
     </div>
   )
 }
