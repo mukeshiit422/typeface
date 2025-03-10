@@ -11,7 +11,7 @@ type UserDataType = {
 export default function UserData({users, setUserId,userId} : UserDataType) {
   return (
     <div className=" bg-gray-900 border-r h-screen overflow-y-auto">
-    <div className="px-4 py-3 shadow-md font-semibold h-[60px] border border-gray-500">Chats</div>
+    <div className="px-4 py-3 shadow-md font-semibold h-[62.5px] border border-gray-500">Chats</div>
      {
        users && users.map((user)=>{
         return <div
@@ -32,7 +32,7 @@ export default function UserData({users, setUserId,userId} : UserDataType) {
             <span className="text-xs text-gray-500">{user.lastMessageTime}</span>
           </div>
           <div className='flex flex-row items-center'>
-          <CheckCheck size={14} className='text-blue-600 mr-2'/>
+          {user.lastMessage && <CheckCheck size={14} className='text-blue-600 mr-2'/> }
           <p className="text-sm text-gray-300 truncate">{user.lastMessage}</p>
           </div>
         </div>

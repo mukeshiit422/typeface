@@ -1,9 +1,7 @@
 
 import React, { useState } from 'react'
 import { Message } from './Types'
-import { Dummy_User } from '../util/constant';
 import { Send } from "lucide-react";
-import { UserType } from '../user/UserType';
 
 type FooterType = {
   message : Message[],
@@ -22,24 +20,28 @@ export default function Footer({setMessage,message} : FooterType) {
       });
     setNewMess({
       message: event.target.value,
-      createAt: time12h
+      createAt: time12h,
+      id: message.length + 1,
+      isDeleted: false,
     })
     
 
   }
   const handleSend = ()=>{
-     if(newMess){
+     if(newMess?.message){
      setMessage([...message,newMess]);
      setNewMess({
       message: "",
-      createAt: ""
+      createAt: "",
+      id: message.length + 1,
+      isDeleted: false,
     })
      }
   }
-  console.log("newMess>>",newMess)
+  
   return (
     <div className='flex flex-row mt-auto w-full bg-gray-900 p-4' >
-      <input className='border border-gray-500 rounded-full w-full pl-2 ' type='input' onChange={handleMessage} value={newMess && newMess.message} placeholder='Type message here'/>
+      <input className='border border-gray-500 rounded-full w-full pl-2 h-10' type='input' onChange={handleMessage} value={newMess && newMess.message} placeholder='Type message here'/>
       <button className='ml-2 text-green-500 cursor-pointer' onClick={handleSend}>
         <Send size={20}/>
       </button>
