@@ -1,12 +1,6 @@
 import React from 'react'
-import { UserType } from './UserType'
+import { UserDataType } from './UserType'
 import { CheckCheck } from "lucide-react";
-
-type UserDataType = {
-  users : UserType[],
-  setUserId : (id: number)=> void;
-  userId: number  | undefined
-}
 
 export default function UserData({users, setUserId,userId} : UserDataType) {
   return (

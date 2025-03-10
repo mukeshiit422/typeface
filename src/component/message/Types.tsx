@@ -1,3 +1,4 @@
+import { UserType } from "../user/UserType"
 export type User = {
     name : string,
     email ?: string
@@ -8,3 +9,25 @@ export type Message ={
     message : string,
     createAt:  string
 }
+
+export type MessageListType = {
+    messages :  Message[],
+    setDeletedMessageId : (deletedMessageId : number)=> void
+  }
+  
+export type MeaageFormatedType = {
+  message : Message,
+  setDeletedMessageId : (deletedMessageId : number)=> void
+}
+
+export type MessageBodyType = {
+    setUser : (users : UserType[])=> void;
+    user : UserType,
+    users: UserType[]
+  }
+
+ export  type FooterType = {
+    message : Message[],
+    setMessage : (mes : Message[]) => void;
+    
+  }

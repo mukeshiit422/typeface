@@ -3,16 +3,9 @@ import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import MessageList from './MessageList'
-import { Message } from './Types'
-import { UserType } from '../user/UserType'
+import { Message, MessageBodyType } from './Types'
 
-type MessageBodyType = {
-  setUser : (users : UserType[])=> void;
-  user : UserType,
-  users: UserType[]
-}
-
-export default function MessageBody({setUser, user, users } : MessageBodyType) {
+export default function MessageBody({setUser, user} : MessageBodyType) {
   const [message, setMessage] = useState<Message[]>(user.message);
   const [deletedMessageId, setDeletedMessageId] = useState(0);
   useEffect(()=>{

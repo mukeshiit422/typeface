@@ -1,11 +1,8 @@
 import React, {useState} from 'react'
-import { Message } from './Types'
+import { MeaageFormatedType } from './Types'
 import { CheckCheck, Trash2 } from "lucide-react";
 
-type MeaageFormatedType = {
-  message : Message,
-  setDeletedMessageId : (deletedMessageId : number)=> void
-}
+
 export default function MessageFormated({message,setDeletedMessageId}: MeaageFormatedType) {
   const [isHovered, setIsHovered] = useState(false);
   if(!message.message){

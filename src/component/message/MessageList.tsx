@@ -1,11 +1,7 @@
 import React from 'react'
-import { Message } from './Types'
+import { MessageListType } from './Types'
 import MessageFormated from './MessageFormated'
 
-type MessageListType = {
-  messages :  Message[],
-  setDeletedMessageId : (deletedMessageId : number)=> void
-}
 
 
 export default function MessageList({messages,setDeletedMessageId}: MessageListType) {

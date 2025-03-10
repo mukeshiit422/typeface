@@ -8,3 +8,9 @@ export type UserType = {
     lastMessageTime : string
     message : Message[]
 }
+
+export type UserDataType = {
+    users: UserType[],
+    setUserId : (id: number) => void;
+    userId: number | undefined
+  }

@@ -1,13 +1,8 @@
 import React from 'react'
-import { ArrowLeft, MoreVertical } from "lucide-react"; 
-import { Dummy_User } from '../util/constant';
+import { MoreVertical } from "lucide-react"; 
 import { UserType } from '../user/UserType';
 
-type HeaderType = {
-  user : UserType
-}
-
-export default function Header({user}: HeaderType) {
+export default function Header({user}: {user : UserType}) {
   return (
     <div className="flex items-center bg-gray-900 px-4 py-2 border border-gray-600 shadow-sm">
       <img

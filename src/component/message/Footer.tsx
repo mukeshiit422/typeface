@@ -1,13 +1,8 @@
 
 import React, { useState } from 'react'
-import { Message } from './Types'
+import { Message, FooterType } from './Types'
 import { Send } from "lucide-react";
 
-type FooterType = {
-  message : Message[],
-  setMessage : (mes : Message[]) => void;
-  
-}
 export default function Footer({setMessage,message} : FooterType) {
   const [newMess,setNewMess] = useState<Message>()
 
