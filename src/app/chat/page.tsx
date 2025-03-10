@@ -6,7 +6,7 @@ import { UserType } from "@/component/user/UserType";
 import { Dummy_User } from "@/component/util/constant";
 
 export default function ChatPage() {
-  const[users, setUser]= useState<UserType[]>(Dummy_User);
+  const[users, setUsers]= useState<UserType[]>([...Dummy_User]);
   const [userId, setUserId] = useState<number | undefined>(undefined);
 
   const user = useMemo(()=>{
@@ -19,7 +19,7 @@ export default function ChatPage() {
            <User users={users} setUserId={setUserId} userId={userId}/>
         </div>
           <div  className='flex w-3/4 h-screen overflow-auto border-r order-gray-500'>
-          { userId ? <MessageBody setUser ={setUser} user={user} users={users}/> : 
+          { userId ? <MessageBody setUsers ={setUsers} user={user}/> : 
            <div className="flex flex-col text-center justify-center items-center w-full h-full bg-gray-800">
             <div className="border border-gray-300 p-3 rounded-md">
            <p className="text-gray-500 text-[30px]">Please select the user to chat</p>

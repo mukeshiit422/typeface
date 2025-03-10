@@ -21,9 +21,8 @@ export type MeaageFormatedType = {
 }
 
 export type MessageBodyType = {
-    setUser : (users : UserType[])=> void;
+    setUsers : (users : UserType[])=> void;
     user : UserType,
-    users: UserType[]
   }
 
  export  type FooterType = {
