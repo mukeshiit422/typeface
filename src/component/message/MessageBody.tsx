@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import MessageList from './MessageList'
-import { Message, MessageBodyType } from './Types'
+import { Message, MessageBodyType} from './Types'
+import { UserType } from '../user/UserType'
 
 export default function MessageBody({setUser, user} : MessageBodyType) {
   const [message, setMessage] = useState<Message[]>(user.message);
   const [deletedMessageId, setDeletedMessageId] = useState(0);
+
   useEffect(()=>{
     setMessage(user.message)
   },[user.id])
@@ -21,7 +23,7 @@ export default function MessageBody({setUser, user} : MessageBodyType) {
     if(message.length === 0){
       setDeletedMessageId(0);
     }
-    setUser((prevUsers : any) => prevUsers.map((usr) => usr.id === user.id
+    setUser((prevUsers : UserType[]) => prevUsers.map((usr) => usr.id === user.id
           ? {
               ...usr,
               lastMessage: message.length ? message[message.length - 1]?.message : "",
